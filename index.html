@@ -46,7 +46,7 @@
             <section>
                 <div class="container content-banner">
                     <h1 class="text-banner">SOLUCIONES EFICACES PARA <br/> SU NEGOCIO</h1>
-                    <button class="btn-blue btn-large" type="button">Solicite nuestro servicio</button>
+                    <button class="btn-blue btn-large" data-modal-open type="button">Solicite nuestro servicio</button>
                 </div>
             </section>
             <section class="qualities-section section">
@@ -96,13 +96,22 @@
                     <h2 class="label-color subtitle">A qué nos dedicamos</h2>
                     <ul class="activities-list">
                         <li class="activities-item">
-                            <img src="images/imgDev.jpg" alt="Picture of a programer" width="373" height="323">
+                            <img src="images/imgDev.jpg" alt="Picture of a programer" width="370" height="294">
+                            <div class="activities-desc">
+                                <p>APLICACIONES DE ESCRITORIO</p>
+                            </div>
                         </li>
                         <li class="activities-item">
-                            <img src="images/imgApp.jpg" alt="Picture of dev apps" width="373" height="323">
+                            <img src="images/imgApp.jpg" alt="Picture of dev apps" width="370" height="294">
+                            <div class="activities-desc">
+                                <p>APLICACIONES MÓVILES</p>
+                            </div>
                         </li>
                         <li class="activities-item">
-                            <img src="images/imgDesing.jpg" alt="Picture of a desing" width="373" height="323">
+                            <img src="images/imgDesing.jpg" alt="Picture of a desing" width="370" height="294">
+                            <div class="activities-desc">
+                                <p>SOLUCIONES DE DISEÑO</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -306,6 +315,11 @@
                     </ul>
                 </div>
             </section>
+            <div data-modal class="backdrop is-hidden">
+                <div class="modal">
+                    <button data-modal-close class="btn-close"></button>
+                </div>
+            </div>
         </main>
         <footer class="footer-page">
             <div class="container">
@@ -362,5 +376,6 @@
                 </div>
             </div>
         </footer>
+        <script src="./js/modal.js"></script>
     </body>
 </html>

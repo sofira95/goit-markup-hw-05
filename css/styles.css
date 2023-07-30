@@ -1,5 +1,6 @@
 :root {
     --color-blue: #2196F3;
+    --blue-hover: rgba(33, 150, 243, 0.90);
     --background-brand: #2F303A;
     --background-team: #F5F4FA;
     --text-color: #757575;
@@ -59,11 +60,24 @@ button{
 }
 .link{
     color: var(--label-color);
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 .link.active{
-    color: var(--color-blue); 
+    color: var(--color-blue);
+    position: relative;
 }
-
+.link.active::after{
+    content: ''; /* Agregar contenido vacío para que el pseudo-elemento sea visible */
+    position: absolute; /* Posicionar el pseudo-elemento */
+    bottom: 0; /* Colocar el pseudo-elemento debajo del enlace */
+    left: 0; /* Colocar el pseudo-elemento en la parte izquierda */
+    width: 100%; /* Ancho igual al del enlace */
+    height: 4px; /* Altura del borde inferior */
+    border-radius: 4px;
+    background-color: var(--color-blue); /* Color del borde inferior*/ 
+}
 .link:hover, .link .icon-contact:hover {
     color: var(--color-blue);
     fill: #188CE8;
@@ -138,6 +152,8 @@ button{
 }
 .header-right{
     display: flex;
+    height: 100%;
+    align-items: center;
 }
 .section{
     padding: 94px 0;
@@ -184,7 +200,28 @@ button{
     gap: 30px;
 }
 .activities-item{
-    flex-basis: calc((100% - 60px) / 3);
+    width: 370px;
+    height: 294px;
+    position: relative;
+}
+.activities-desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 224px;
+    width: inherit;
+    height: 70px;
+    background-color: rgba(47, 48, 58, 0.80);
+}
+.activities-desc p{
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+    font-family: inherit;
 }
 .team-section {
     text-align: center;
@@ -264,12 +301,16 @@ address {
     gap: 30px;
 }
 .box-products{
-    left: calc(50% - 370px/2 - 400px);
+    /*left: calc(50% - 370px/2 - 400px);
     top: calc(50% - 404px/2 - 30px);
-    /*flex-basis: calc((100% - 60px) / 3);*/
+    flex-basis: calc((100% - 60px) / 3);*/
+    position: relative;
+    width: 370px;
+    height: 404px;
     background: #FFFFFF;
-    border-bottom: 1px solid #EEEEEE;
+    border: 1px solid #EEE;
     padding-bottom: 20px;
+    overflow: hidden;
 }
 .box-products:nth-child(n + 7){
     margin-bottom: 82px;
@@ -278,6 +319,31 @@ address {
     border-bottom: 1px solid #EEEEEE;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
     cursor: pointer;
+}
+
+.box-products:hover .overlay{
+    transform: translatey(0);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 63px 24px;
+    width: inherit;
+    height: 294px;
+    background: var(--blue-hover);
+    transform: translatey(404px);
+    transition: transform 250ms ease; /*transition: [property] [duration] [timing-function] [delay]*/
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay p {
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.54px;
 }
 .icon-contact{
     margin-right: 10px;
@@ -384,4 +450,45 @@ address {
 .cont-social .icon-social:hover{
     fill: white;
     cursor: pointer;
+}
+main{
+    position: relative;
+}
+.backdrop{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.20);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.backdrop.is-hidden{
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.modal{
+    width: 528px;
+    height: 581px;
+    border-radius: 4px;
+    background: #FFF;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.20), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn-close{
+    width: 30px;
+    height: 30px;
+    position: absolute; /* Posición absoluta para que el botón se ubique en la esquina superior derecha */
+    top: 8px; /* Espacio desde la parte superior del modal */
+    right: 8px; /* Espacio desde la parte derecha del modal */
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+}
+.btn-close::after{
+    content: "X";
+    text-align: center;
 }
